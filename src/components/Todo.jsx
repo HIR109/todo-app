@@ -51,6 +51,32 @@ export default function Todo() {
     localStorage.setItem('todosMemory', JSON.stringify(todos));
   }, [todos]);
 
+  const moveUp = (id) => {
+    setTodos((prev) => {
+      const index = prev.findIndex((todo) => todo.id === id);
+      if (index <= 0) return prev;
+      const newTodos = [...prev];
+      [newTodos[index - 1], newTodos[index]] = [
+        newTodos[index],
+        newTodos[index - 1],
+      ];
+      return newTodos;
+    });
+  };
+
+  const moveDown = (id) => {
+    setTodos((prev) => {
+      const index = prev.findIndex((todo) => todo.id === id);
+      if (index === -1 || index >= prev.length - 1) return prev;
+      const newTodos = [...prev];
+      [newTodos[index], newTodos[index + 1]] = [
+        newTodos[index + 1],
+        newTodos[index],
+      ];
+      return newTodos;
+    });
+  };
+
   return (
     <div className="bg-white place-self-center w-11/12 max-w-md flex flex-col p-7 min-h-[550px] rounded-xl">
       <div className="flex items-center mt-7 gap-2">
@@ -79,7 +105,7 @@ export default function Todo() {
       </div>
 
       <div>
-        {todos.map((todo) => {
+        {todos.map((todo,index) => {
           return (
             <TodoItems
               key={todo.id}
@@ -88,6 +114,10 @@ export default function Todo() {
               isComplete={todo.isComplete}
               deleteTodo={deleteTodo}
               toggle={toggle}
+              moveUp={moveUp}
+              moveDown={moveDown}
+              isFirst={index === 0}
+              isLast={index === todos.length - 1}
             />
           );
         })}

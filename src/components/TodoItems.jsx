@@ -9,9 +9,29 @@ export default function TodoItems({
   isComplete,
   deleteTodo,
   toggle,
+  isFirst,
+  isLast,
+  moveUp,
+  moveDown,
 }) {
   return (
-    <div className="flex items-center my-3 gap-2">
+    <div className="flex items-center my-3 gap-2 border-b">
+      <div className=" flex-col gap-1">
+        <button
+          onClick={() => moveUp(id)}
+          disabled={isFirst}
+          className="text-xl text-gray-500 inline-block"
+        >
+          🔼
+        </button>
+        <button
+          onClick={() => moveDown(id)}
+          disabled={isLast}
+          className="text-xl text-gray-500"
+        >
+          🔽
+        </button>
+      </div>
       <div
         onClick={() => {
           toggle(id);
@@ -27,6 +47,7 @@ export default function TodoItems({
           {text}
         </p>
       </div>
+
       <img
         src={delete_icon}
         alt=""
