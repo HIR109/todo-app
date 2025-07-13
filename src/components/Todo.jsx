@@ -64,6 +64,11 @@ export default function Todo() {
           type="text"
           placeholder="やることを書いてね"
           ref={inputRef}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              add();
+            }
+          }}
         />
         <button
           onClick={add}
