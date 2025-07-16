@@ -1,12 +1,64 @@
-# React + Vite
+# TASK-APP（タスク管理アプリ）
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ReactとTailwind CSSを使って作成したシンプルで使いやすいタスク管理アプリです。  
+ローカルストレージ対応により、ページをリロードしてもタスクが保持されます。
+※このアプリは学習用教材をベースに個人で模写・機能追加したものです。著作権は元の教材の制作者に帰属します。
+---
 
-Currently, two official plugins are available:
+## ✨ 主な機能
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- ✅ タスクの追加（Enterキー対応）
+- ✅ タスクの完了／未完了の切り替え
+- ✅ タスクの削除
+- ✅ タスクの並び替え（↑ ↓）
+- ✅ ローカルストレージ保存による永続化
+- ✅ UIにアイコン画像を使用し、視覚的にわかりやすいデザイン
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠 使用技術
+
+- React 19
+- Vite
+- Tailwind CSS
+- JavaScript（ES6+）
+- uuid（タスクIDの一意化）
+- ローカルストレージ（ブラウザ保存）
+
+---
+
+## 🖥 デモ
+
+https://hir109.github.io/todo-app
+
+---
+
+## 🚀 セットアップ手順
+
+```bash
+# リポジトリをクローン
+git clone https://github.com/yhir109/task-app.git
+cd task-app
+
+# 依存パッケージをインストール
+npm install
+
+# 開発サーバー起動
+npm run dev
+```
+
+
+ディレクトリ構成
+src/
+├── assets/              # アイコン画像（完了／未完了／削除ボタン）
+│   ├── delete.png
+│   ├── not_tick.png
+│   ├── tick.png
+│   └── todo_icon.png
+├── components/          # コンポーネント群
+│   ├── Todo.jsx         # タスク入力とロジック
+│   └── TodoItems.jsx    # タスク単体の表示・操作
+├── App.jsx              # アプリ全体
+├── main.jsx             # エントリーポイント
+├── index.css            # Tailwindスタイル読み込み
+
